@@ -43,3 +43,31 @@ body{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px}
 .sidebar nav button{font-size:20px}
 @media(max-width:900px){.feature-grid{grid-template-columns:1fr}.hero{height:240px}}
 @media(max-width:560px){.hero{height:210px}.mission{grid-template-columns:1fr}.statue{height:205px;background-position:center 34%}.mission-copy{padding:20px}.mission h2{font-size:38px}.mission p{font-size:17px}}
+
+
+/* Functional MVP — empty states, authentication and admin controls */
+.auth{max-width:580px;margin:20px auto}
+.auth form,.admin form,.mission-copy form{display:grid;gap:13px;margin:20px 0}
+.auth input,.admin input,.admin textarea,.mission-copy textarea{width:100%;border:1px solid #6b4c43;background:#160e0e;color:#f4e4d8;border-radius:4px;padding:13px 15px;font:inherit}
+.admin textarea,.mission-copy textarea{min-height:120px;resize:vertical}
+.auth button,.admin form button,.mission-copy form button,.review button{background:#361b1a;border:1px solid #a98675;color:#f5e6dd;padding:12px 20px;letter-spacing:1px}
+.auth .text-button{background:transparent;border:0;text-decoration:underline;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.logout{background:transparent;border:0;display:grid;place-items:center}
+.empty{min-height:355px;display:flex;flex-direction:column;justify-content:center}
+.empty h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:35px}
+.empty-live{background:#160f0f!important;color:#bca59b;font-style:italic;text-align:center;padding:20px}
+.challenge-list{display:grid;gap:20px}
+.challenge-list .mission{min-height:300px}
+.mission .statue span{font-size:20px;letter-spacing:5px}
+.mission-copy p{white-space:pre-wrap;overflow-wrap:anywhere}
+.mission-copy .actions span{color:#cdb2a4}
+.admin h3{font-weight:400;font-size:27px;margin-top:30px}
+.admin label{color:#c5a99a}
+.review{padding:16px 0;border-top:1px solid #49322d}
+.review p{white-space:pre-wrap;overflow-wrap:anywhere}
+.review button{margin-right:12px}
+.ranking{display:none!important}
+.hero{padding-right:30px!important}
+@media(min-width:1301px){.hero>div{max-width:100%}}
+@media(max-width:560px){.mission .statue{height:110px}.mission-copy .details{flex-direction:column}}
