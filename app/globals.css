@@ -152,3 +152,22 @@ button:disabled{opacity:.5;cursor:not-allowed}
  .hero{height:290px !important;min-height:290px !important;background-position:57% center !important;padding:22px !important}
  .hero h1{font-size:31px !important}
 }
+
+/* Approved high-resolution panorama uploaded to /public. */
+.hero{
+  width:100%;
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:3 / 1;
+  padding:0 !important;
+  background-image:url('/Mans%C3%A3o%20Real%20ao%20Entardecer.png') !important;
+  background-size:100% 100% !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-color:#100b11;
+}
+.hero:after{display:none !important}
+.hero>div{visibility:hidden !important}
+@media(max-width:700px){
+ .hero{height:auto !important;min-height:0 !important;aspect-ratio:3 / 1;background-size:100% 100% !important;background-position:center !important}
+}
