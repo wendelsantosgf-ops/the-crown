@@ -129,3 +129,26 @@ button:disabled{opacity:.5;cursor:not-allowed}
   background-position:center 52% !important;
 }
 .hero:after{box-shadow:none !important;background:transparent !important}
+
+/* Cinematic mansion hero — taller composition to retain the building */
+.hero{
+  height:clamp(340px,30vw,440px) !important;
+  min-height:340px !important;
+  padding:clamp(22px,2.4vw,40px) !important;
+  background-image:
+    linear-gradient(0deg,rgba(9,5,8,.76) 0%,rgba(9,5,8,.18) 35%,transparent 75%),
+    linear-gradient(90deg,rgba(9,5,8,.35) 0%,transparent 64%),
+    url('/crown-mansion.jpg') !important;
+  background-position:center center !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  border:1px solid rgba(181,137,109,.22);
+  border-radius:4px;
+}
+.hero:after{box-shadow:none !important;background:none !important}
+.hero h1{font-size:clamp(32px,3vw,49px) !important;text-shadow:0 2px 18px #000c}
+.hero p{text-shadow:0 2px 12px #000c}
+@media(max-width:700px){
+ .hero{height:290px !important;min-height:290px !important;background-position:57% center !important;padding:22px !important}
+ .hero h1{font-size:31px !important}
+}
