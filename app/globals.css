@@ -117,3 +117,15 @@ button:disabled{opacity:.5;cursor:not-allowed}
  background-size:cover;
  background-position:center 48%;
 }
+
+/* Fix: keep the mansion visible while preserving readable hero copy. */
+.hero{
+  background-color:#171015;
+  background-image:
+    linear-gradient(90deg,rgba(10,6,9,.55) 0%,rgba(10,6,9,.12) 48%,transparent 85%),
+    url('/crown-mansion.jpg') !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  background-position:center 52% !important;
+}
+.hero:after{box-shadow:none !important;background:transparent !important}
