@@ -71,3 +71,22 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .hero{padding-right:30px!important}
 @media(min-width:1301px){.hero>div{max-width:100%}}
 @media(max-width:560px){.mission .statue{height:110px}.mission-copy .details{flex-direction:column}}
+
+
+/* The Crown — photographic palace atmosphere. Prefer the commissioned
+   local image once uploaded; a real architectural photograph is the fallback. */
+.hero{
+  background-image:
+    linear-gradient(0deg,rgba(12,7,9,.88) 0%,rgba(12,7,9,.10) 75%),
+    linear-gradient(90deg,rgba(12,7,9,.74),rgba(12,7,9,.08) 72%),
+    url('/the-crown-palace.png'),
+    url('https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1800&q=85');
+  background-size:cover;
+  background-position:center 54%;
+  min-height:310px;
+}
+.hero:after{box-shadow:inset 0 0 65px 12px rgba(9,4,5,.35)}
+.auth{background:linear-gradient(145deg,rgba(35,17,17,.94),rgba(15,9,10,.96));border:1px solid #795347;box-shadow:0 20px 65px #0008;border-radius:7px;padding:28px 32px;backdrop-filter:blur(9px)}
+.auth input{background:rgba(18,9,10,.82);border-color:#795347}
+.auth button:not(.text-button){background:linear-gradient(90deg,#411918,#582120);border-color:#ad806a}
+@media(max-width:560px){.hero{min-height:240px}.auth{padding:20px;margin:16px auto}}
