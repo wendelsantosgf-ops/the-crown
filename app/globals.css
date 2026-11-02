@@ -182,3 +182,5 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .admin-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid #493533;padding-bottom:20px;margin-bottom:20px;color:#bea79b}
 @media(max-width:1050px){.admin-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.admin-overview{grid-template-columns:1fr 1fr;gap:8px}.admin-kpi{padding:12px;min-height:110px}.admin-kpi strong{font-size:30px}.admin-kpi span{font-size:9px}}
+
+.admin-role-controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 28px}.admin-role-controls select{min-width:220px;flex:1}.admin h3{margin-top:28px}
