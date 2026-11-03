@@ -63,8 +63,9 @@ export default function Home(){
   if(challengeRows.status==="fulfilled")setChallenges(challengeRows.value);
   if(entryRows.status==="fulfilled")setEntries(entryRows.value);
   if(leaderRows.status==="fulfilled")setLeaders(leaderRows.value);
-  const failures=results.filter(r=>r.status==="rejected");
-  if(failures.length)notify("Alguns dados não carregaram. Atualize a página para tentar novamente.");
+  const labels=["permissões administrativas","desafios","participações","ranking de nicknames"];
+  const failures=results.map((r,i)=>r.status==="rejected"?labels[i]+": "+(r.reason?.message||"erro desconhecido"):null).filter(Boolean);
+  if(failures.length)notify("Falha ao carregar "+failures.join(" | "));
  },[]);
  useEffect(()=>{if(!base||!key)return;let live=true;api("/rest/v1/crown_site_settings?select=*&id=eq.1").then(rows=>{if(live&&rows?.[0]){const s=rows[0];const next={primary_color:s.primary_color,accent_color:s.accent_color,background_color:s.background_color,menu_order:s.menu_order,hidden_menu:s.hidden_menu};setAppearance(next);setDraftAppearance(next);}}).catch(()=>{});return()=>{live=false}},[]);
  const visibleNav=[...nav].sort((a,b)=>appearance.menu_order.indexOf(a[0])-appearance.menu_order.indexOf(b[0])).filter(([name])=>!appearance.hidden_menu.includes(name));
