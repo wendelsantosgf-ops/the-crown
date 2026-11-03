@@ -220,3 +220,28 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .avatar-profile-link:focus-visible{outline:2px solid #e5bb96;outline-offset:3px}
 .avatar-profile-link:disabled{cursor:default;opacity:.75}
 .avatar-profile-link img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+/* Live owner-managed theme */
+.shell{background:var(--crown-background,#0c0909)}
+.sidebar nav button.active,.sidebar nav button:hover{background:var(--crown-primary,#8c383f);border-color:var(--crown-accent,#d6ad79)}
+.brand,.admin>h2,.admin-section h3,.admin-kpi strong{color:var(--crown-accent,#d6ad79)}
+.admin-section button:not(:disabled):hover{border-color:var(--crown-accent,#d6ad79)}
+.admin-appearance{margin:22px 0}
+.admin-appearance h4{font:500 18px Georgia,serif;color:var(--crown-accent,#d6ad79);margin:22px 0 10px}
+.appearance-colors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.appearance-colors>label{display:flex;flex-direction:column;gap:9px;font:12px Inter,sans-serif;color:#d6bcae}
+.appearance-color-input{display:flex;gap:7px;align-items:center}
+.admin-section .appearance-color-input input[type=color]{width:50px;min-width:50px;height:45px;padding:3px;cursor:pointer}
+.appearance-menu{display:grid;gap:7px}
+.appearance-menu-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid #4b3634;border-radius:5px;min-width:0}
+.appearance-menu-item>span{flex:1;min-width:0}
+.appearance-menu-item label{display:flex;align-items:center;gap:6px;margin:0}
+.admin-section .appearance-menu-item input[type=checkbox]{width:17px;min-height:17px;height:17px;accent-color:var(--crown-accent,#d6ad79)}
+.appearance-menu-item button{min-height:32px;padding:5px 10px}
+.appearance-preview{background:var(--crown-background);border:1px solid var(--crown-accent);border-radius:6px;margin-top:18px;padding:16px;display:grid;gap:12px}
+.appearance-preview>strong{color:var(--crown-accent);letter-spacing:3px}
+.appearance-preview-nav{display:flex;gap:7px;flex-wrap:wrap}
+.appearance-preview-nav span{border:1px solid var(--crown-primary);border-radius:4px;padding:6px 9px;font:11px Inter,sans-serif;color:#f6e6da}
+.appearance-preview-highlight{background:var(--crown-primary);padding:13px;color:#fff;font:14px Georgia,serif}
+.appearance-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:16px}
+@media(max-width:700px){.appearance-colors{grid-template-columns:1fr}.appearance-menu-item{flex-wrap:wrap}.appearance-menu-item>span{flex-basis:100%}.appearance-actions button{flex:1}}
