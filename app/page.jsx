@@ -52,7 +52,7 @@ export default function Home(){
    api("/rest/v1/crown_admins?select=user_id&user_id=eq."+encodeURIComponent(s.user.id),{token:t}),
    api("/rest/v1/crown_challenges?select=*&order=created_at.desc",{token:t}),
    api("/rest/v1/crown_entries?select=*&order=created_at.desc",{token:t}),
-   api("/rest/v1/crown_public_leaderboard?select=nickname,points&order=points.desc,created_at.asc&limit=50",{token:t})
+   api("/rest/v1/crown_public_leaderboard?select=id,nickname,points&order=points.desc,created_at.asc&limit=50",{token:t})
   ]);
   const [admins,challengeRows,entryRows,leaderRows]=results;
   if(admins.status==="fulfilled"){
