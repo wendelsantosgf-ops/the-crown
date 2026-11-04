@@ -65,6 +65,8 @@ export default function Home(){
   if(challengeRows.status==="fulfilled")setChallenges(challengeRows.value);
   if(entryRows.status==="fulfilled")setEntries(entryRows.value);
   if(leaderRows.status==="fulfilled")setLeaders(leaderRows.value);
+  const economy=await Promise.allSettled(["crown_challenge_contestants?select=*","crown_wagers?select=*","crown_challenge_results?select=*","crown_challenge_comments?select=*&order=created_at.asc","crown_coin_ledger?select=*&order=created_at.desc&limit=100"].map(q=>api("/rest/v1/"+q,{token:t})));
+  [setContestants,setWagers,setChallengeResults,setComments,setCoinLedger].forEach((setter,i)=>{if(economy[i].status==="fulfilled")setter(economy[i].value)});
   const labels=["permissões administrativas","desafios","participações","ranking de nicknames"];
   const failures=results.map((r,i)=>r.status==="rejected"?labels[i]+": "+(r.reason?.message||"erro desconhecido"):null).filter(Boolean);
   if(failures.length)notify("Falha ao carregar "+failures.join(" | "));
