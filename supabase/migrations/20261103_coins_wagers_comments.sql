@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS public.crown_wagers (
 -- ETAPA 4: HISTÓRICO DE COINS
 
 CREATE TABLE IF NOT EXISTS public.crown_coin_ledger (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
     user_id UUID NOT NULL
         REFERENCES public.crown_profiles(id),
