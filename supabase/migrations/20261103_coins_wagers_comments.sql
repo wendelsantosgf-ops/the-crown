@@ -117,3 +117,5 @@ CREATE TABLE IF NOT EXISTS public.crown_challenge_results (
             challenge_id, user_id
         )
 );
+
+-- Migração em desenvolvimento: não executar até concluir a revisão de segurança.
