@@ -21,7 +21,8 @@ ALTER TABLE public.crown_profiles ADD CONSTRAINT crown_coins_nonnegative
 CHECK (coins >= 0);
 
 -- Ranking exclusivo para jogadores
-CREATE OR REPLACE VIEW public.crown_public_leaderboard
+DROP VIEW IF EXISTS public.crown_public_leaderboard;
+CREATE VIEW public.crown_public_leaderboard
 WITH (security_invoker = true) AS
 SELECT id, nickname, points, created_at, avatar_path
 FROM public.crown_profiles
