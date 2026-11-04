@@ -259,3 +259,31 @@ CREATE POLICY crown_entries_create ON public.crown_entries FOR INSERT TO authent
 WITH CHECK(user_id=auth.uid() AND status='accepted' AND submission IS NULL
  AND EXISTS(SELECT 1 FROM public.crown_profiles WHERE id=auth.uid() AND account_type='player')
  AND EXISTS(SELECT 1 FROM public.crown_challenges WHERE id=challenge_id AND status='published' AND (deadline IS NULL OR deadline>now())));
+
+-- Keep the existing participation endpoint aligned with the two-player limit.
+CREATE OR REPLACE FUNCTION public.crown_limit_entries()
+RETURNS trigger LANGUAGE plpgsql SET search_path='' AS $$
+DECLARE v_slot smallint;
+BEGIN
+ IF NOT EXISTS(SELECT 1 FROM public.crown_profiles WHERE id=NEW.user_id AND account_type='player') THEN
+  RAISE EXCEPTION 'Observadores não podem participar de desafios';
+ END IF;
+ PERFORM 1 FROM public.crown_challenges WHERE id=NEW.challenge_id FOR UPDATE;
+ IF EXISTS(SELECT 1 FROM public.crown_challenge_results WHERE challenge_id=NEW.challenge_id) THEN
+  RAISE EXCEPTION 'Desafio encerrado';
+ END IF;
+ IF EXISTS(SELECT 1 FROM public.crown_challenge_contestants WHERE challenge_id=NEW.challenge_id AND user_id=NEW.user_id) THEN RETURN NEW; END IF;
+ SELECT s::smallint INTO v_slot FROM generate_series(1,2) s
+ WHERE NOT EXISTS(SELECT 1 FROM public.crown_challenge_contestants WHERE challenge_id=NEW.challenge_id AND slot=s)
+ ORDER BY s LIMIT 1;
+ IF v_slot IS NULL THEN RAISE EXCEPTION 'Desafio limitado a dois participantes'; END IF;
+ INSERT INTO public.crown_challenge_contestants(challenge_id,user_id,slot) VALUES(NEW.challenge_id,NEW.user_id,v_slot);
+ RETURN NEW;
+END; $$;
+DROP TRIGGER IF EXISTS crown_limit_entries_trigger ON public.crown_entries;
+CREATE TRIGGER crown_limit_entries_trigger BEFORE INSERT ON public.crown_entries
+FOR EACH ROW EXECUTE FUNCTION public.crown_limit_entries();
+
+-- Public results must remain readable after the challenge is closed.
+DROP POLICY IF EXISTS crown_challenges_read ON public.crown_challenges;
+CREATE POLICY crown_challenges_read ON public.crown_challenges FOR SELECT TO authenticated USING(true);
