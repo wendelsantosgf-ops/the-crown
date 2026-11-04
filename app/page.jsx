@@ -34,7 +34,7 @@ export default function Home(){
  const [profileLoading,setProfileLoading]=useState(true);const [showChallengeForm,setShowChallengeForm]=useState(false);
  const [profileError,setProfileError]=useState("");
  const [betAmount,setBetAmount]=useState({}),[commentText,setCommentText]=useState({}),[replyTo,setReplyTo]=useState({});
- const [contestants,setContestants]=useState([]),[wagers,setWagers]=useState([]),[challengeResults,setChallengeResults]=useState([]),[comments,setComments]=useState([]),[coinLedger,setCoinLedger]=useState([]);
+ const [contestants,setContestants]=useState([]),[wagers,setWagers]=useState([]),[challengeResults,setChallengeResults]=useState([]),[comments,setComments]=useState([]),[coinLedger,setCoinLedger]=useState([]),[publicNames,setPublicNames]=useState([]);
  const refresh=useCallback(async(s)=>{
   if(!s?.access_token){setProfileLoading(false);return;}
   const t=s.access_token;
@@ -66,8 +66,8 @@ export default function Home(){
   if(challengeRows.status==="fulfilled")setChallenges(challengeRows.value);
   if(entryRows.status==="fulfilled")setEntries(entryRows.value);
   if(leaderRows.status==="fulfilled")setLeaders(leaderRows.value);
-  const economy=await Promise.allSettled(["crown_challenge_contestants?select=*","crown_wagers?select=*","crown_challenge_results?select=*","crown_challenge_comments?select=*&order=created_at.asc","crown_coin_ledger?select=*&order=created_at.desc&limit=100"].map(q=>api("/rest/v1/"+q,{token:t})));
-  [setContestants,setWagers,setChallengeResults,setComments,setCoinLedger].forEach((setter,i)=>{if(economy[i].status==="fulfilled")setter(economy[i].value)});
+  const economy=await Promise.allSettled(["crown_challenge_contestants?select=*","crown_wagers?select=*","crown_challenge_results?select=*","crown_challenge_comments?select=*&order=created_at.asc","crown_coin_ledger?select=*&order=created_at.desc&limit=100","crown_public_names?select=id,nickname"].map(q=>api("/rest/v1/"+q,{token:t})));
+  [setContestants,setWagers,setChallengeResults,setComments,setCoinLedger,setPublicNames].forEach((setter,i)=>{if(economy[i].status==="fulfilled")setter(economy[i].value)});
   const labels=["permissões administrativas","desafios","participações","ranking de nicknames"];
   const failures=results.map((r,i)=>r.status==="rejected"?labels[i]+": "+(r.reason?.message||"erro desconhecido"):null).filter(Boolean);
   if(failures.length)notify("Falha ao carregar "+failures.join(" | "));
