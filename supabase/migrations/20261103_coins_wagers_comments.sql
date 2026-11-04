@@ -216,14 +216,12 @@ BEGIN
  IF NOT FOUND OR EXISTS(SELECT 1 FROM public.crown_challenge_results WHERE challenge_id=p_challenge) THEN RAISE EXCEPTION 'Apostas encerradas'; END IF;
  IF NOT EXISTS(SELECT 1 FROM public.crown_challenge_contestants WHERE challenge_id=p_challenge AND user_id=p_contestant) THEN RAISE EXCEPTION 'Participante inválido'; END IF;
  IF EXISTS(SELECT 1 FROM public.crown_wagers WHERE challenge_id=p_challenge AND bettor_id=auth.uid() AND contestant_id=p_contestant) THEN RAISE EXCEPTION 'Aposta já registrada neste participante'; END IF;
- PERFORM set_config('crown.wallet_operation','allowed',true);
  UPDATE public.crown_profiles SET coins=coins-p_amount WHERE id=auth.uid() AND coins>=p_amount;
  IF NOT FOUND THEN RAISE EXCEPTION 'Coins insuficientes'; END IF;
  INSERT INTO public.crown_wagers(challenge_id,bettor_id,contestant_id,amount)
  VALUES(p_challenge,auth.uid(),p_contestant,p_amount) RETURNING id INTO v_wager;
  INSERT INTO public.crown_coin_ledger(user_id,challenge_id,wager_id,delta,reason)
  VALUES(auth.uid(),p_challenge,v_wager,-p_amount,'stake');
- PERFORM set_config('crown.wallet_operation','',true);
 END; $$;
 
 CREATE OR REPLACE FUNCTION public.crown_settle_challenge(p_challenge uuid,p_winner uuid DEFAULT NULL)
@@ -239,7 +237,6 @@ BEGIN
  END IF;
  INSERT INTO public.crown_challenge_results(challenge_id,winner_id,settled_by) VALUES(p_challenge,p_winner,auth.uid());
  UPDATE public.crown_challenges SET status='closed' WHERE id=p_challenge;
- PERFORM set_config('crown.wallet_operation','allowed',true);
  FOR w IN SELECT * FROM public.crown_wagers WHERE challenge_id=p_challenge AND status='pending' FOR UPDATE LOOP
   IF w.contestant_id=p_winner THEN
    UPDATE public.crown_wagers SET status='won',payout=w.amount*2 WHERE id=w.id;
@@ -250,7 +247,6 @@ BEGIN
    UPDATE public.crown_wagers SET status='lost' WHERE id=w.id;
   END IF;
  END LOOP;
- PERFORM set_config('crown.wallet_operation','',true);
 END; $$;
 REVOKE ALL ON FUNCTION public.crown_join_challenge(uuid),public.crown_place_wager(uuid,uuid,bigint),public.crown_settle_challenge(uuid,uuid) FROM PUBLIC,anon;
 GRANT EXECUTE ON FUNCTION public.crown_join_challenge(uuid),public.crown_place_wager(uuid,uuid,bigint),public.crown_settle_challenge(uuid,uuid) TO authenticated;
