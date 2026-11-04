@@ -180,6 +180,7 @@ CREATE POLICY crown_comments_insert ON public.crown_challenge_comments FOR INSER
 DROP POLICY IF EXISTS crown_comments_delete ON public.crown_challenge_comments;
 CREATE POLICY crown_comments_delete ON public.crown_challenge_comments FOR DELETE TO authenticated USING(author_id=auth.uid() OR public.crown_is_admin());
 GRANT SELECT ON public.crown_challenge_contestants,public.crown_wagers,public.crown_coin_ledger,public.crown_challenge_results,public.crown_challenge_comments TO authenticated;
+REVOKE UPDATE(coins,account_type) ON public.crown_profiles FROM authenticated,anon;
 GRANT INSERT,DELETE ON public.crown_challenge_comments TO authenticated;
 REVOKE INSERT,UPDATE,DELETE ON public.crown_wagers,public.crown_coin_ledger,public.crown_challenge_results,public.crown_challenge_contestants FROM authenticated,anon;
 
