@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS public.crown_challenge_results (
 CREATE OR REPLACE FUNCTION public.crown_guard_wallet()
 RETURNS trigger LANGUAGE plpgsql SET search_path = '' AS $$
 BEGIN
- IF current_user IN ('authenticated','anon') OR session_user IN ('authenticated','anon') THEN
+IF current_user IN ('authenticated','anon') THEN
   IF TG_OP = 'INSERT' THEN
    IF NEW.coins <> 1000 THEN RAISE EXCEPTION 'Saldo inicial inválido'; END IF;
   ELSIF NEW.coins IS DISTINCT FROM OLD.coins OR NEW.account_type IS DISTINCT FROM OLD.account_type THEN
