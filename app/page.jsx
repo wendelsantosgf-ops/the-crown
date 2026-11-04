@@ -33,6 +33,7 @@ export default function Home(){
  const [appearance,setAppearance]=useState(defaultAppearance),[draftAppearance,setDraftAppearance]=useState(defaultAppearance),[appearanceLoading,setAppearanceLoading]=useState(false);
  const [profileLoading,setProfileLoading]=useState(true);const [showChallengeForm,setShowChallengeForm]=useState(false);
  const [profileError,setProfileError]=useState("");
+ const [betAmount,setBetAmount]=useState({}),[commentText,setCommentText]=useState({}),[replyTo,setReplyTo]=useState({});
  const [contestants,setContestants]=useState([]),[wagers,setWagers]=useState([]),[challengeResults,setChallengeResults]=useState([]),[comments,setComments]=useState([]),[coinLedger,setCoinLedger]=useState([]);
  const refresh=useCallback(async(s)=>{
   if(!s?.access_token){setProfileLoading(false);return;}
