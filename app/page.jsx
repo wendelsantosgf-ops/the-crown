@@ -1,7 +1,7 @@
 "use client";
 import {useEffect,useState,useCallback,useRef} from "react";
 import {Crown,House,Target,Trophy,Coins,Users,Mail,Folder,Info,Bell,Menu,X,Clock,CheckCircle,LogOut,UserRound,Save,Camera,ZoomIn} from "lucide-react";
-const nav=[["Início",House],["Desafios",Target],["Ranking",Trophy],["Apostas",Coins],["Audiência",Users],["Mensagens",Mail],["Arquivos",Folder],["Regras",Info]];
+const nav=[["Início",House],["Desafios",Target],["Ranking",Trophy],["Audiência",Users],["Mensagens",Mail],["Arquivos",Folder],["Regras",Info]];
 const defaultAppearance={primary_color:"#8c383f",accent_color:"#d6ad79",background_color:"#0c0909",menu_order:nav.map(([n])=>n),hidden_menu:[]};
 const validColor=v=>/^#[0-9a-fA-F]{6}$/.test(v);
 
