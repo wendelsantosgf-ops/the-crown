@@ -287,3 +287,19 @@ FOR EACH ROW EXECUTE FUNCTION public.crown_limit_entries();
 -- Public results must remain readable after the challenge is closed.
 DROP POLICY IF EXISTS crown_challenges_read ON public.crown_challenges;
 CREATE POLICY crown_challenges_read ON public.crown_challenges FOR SELECT TO authenticated USING(true);
+
+-- Public display names for both players and observers, without exposing usernames.
+CREATE OR REPLACE VIEW public.crown_public_names WITH (security_invoker=true) AS
+SELECT id,nickname,avatar_path FROM public.crown_profiles;
+GRANT SELECT ON public.crown_public_names TO authenticated;
+
+-- Carry over up to two previously registered entrants per challenge.
+WITH ranked AS (
+ SELECT e.challenge_id,e.user_id,
+ row_number() OVER(PARTITION BY e.challenge_id ORDER BY e.created_at,e.id) AS slot
+ FROM public.crown_entries e
+ JOIN public.crown_profiles p ON p.id=e.user_id AND p.account_type='player'
+)
+INSERT INTO public.crown_challenge_contestants(challenge_id,user_id,slot)
+SELECT challenge_id,user_id,slot::smallint FROM ranked WHERE slot<=2
+ON CONFLICT DO NOTHING;
