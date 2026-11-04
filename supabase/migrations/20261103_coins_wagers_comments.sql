@@ -262,7 +262,7 @@ WITH CHECK(user_id=auth.uid() AND status='accepted' AND submission IS NULL
 
 -- Keep the existing participation endpoint aligned with the two-player limit.
 CREATE OR REPLACE FUNCTION public.crown_limit_entries()
-RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $
+RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER SET search_path='' AS $$
 DECLARE v_slot smallint;
 BEGIN
  IF NOT EXISTS(SELECT 1 FROM public.crown_profiles WHERE id=NEW.user_id AND account_type='player') THEN
