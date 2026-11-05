@@ -1,7 +1,7 @@
 import "./globals.css";
 
 const siteUrl="https://thecrown-rpg.vercel.app";
-const previewImage=siteUrl+"/the-crown-pixel-bg.png";
+const previewImage=siteUrl+"/opengraph-image";
 
 export const metadata={
   metadataBase:new URL(siteUrl),
