@@ -293,7 +293,7 @@ body{background:var(--arcade-ink);color:var(--arcade-text);font-family:'Space Gr
 .identity{font-family:'Space Grotesk',sans-serif;color:#fff}
 .identity span{color:#ff8ee7}
 .content{max-width:1500px}
-.hero{position:relative;min-height:380px;display:flex;align-items:flex-end;justify-content:center;text-align:center;overflow:hidden;border:2px solid #aa5eff!important;border-radius:9px!important;box-shadow:0 0 0 4px #0a0924,0 0 26px #ed3ac66e,inset 0 0 60px #12042d;background-image:linear-gradient(180deg,rgba(13,7,42,.04) 30%,rgba(9,4,30,.8) 100%),url('/crown-arcade-bg.svg')!important;background-size:cover!important;background-position:center!important}
+.hero{position:relative;min-height:380px;display:flex;align-items:flex-end;justify-content:center;text-align:center;overflow:hidden;border:2px solid #aa5eff!important;border-radius:9px!important;box-shadow:0 0 0 4px #0a0924,0 0 26px #ed3ac66e,inset 0 0 60px #12042d;background-image:linear-gradient(180deg,rgba(13,7,42,.04) 30%,rgba(9,4,30,.8) 100%),url('/the-crown-pixel-bg.png')!important;background-size:cover!important;background-position:center!important}
 .hero:before{content:'♛  THE CROWN  ♛';position:absolute;top:10%;left:0;right:0;font:clamp(20px,4vw,52px)/1.4 'Press Start 2P',monospace;letter-spacing:1px;color:#fff1ff;text-shadow:4px 4px #772ab4,0 0 18px #ff42c8,0 0 34px #f52fc6;pointer-events:none}
 .hero>div{position:relative;z-index:1;padding:14px 24px 24px;background:linear-gradient(transparent,#0c0823bb);width:100%}
 .hero h1{font-family:'Press Start 2P',monospace!important;font-size:clamp(11px,1.5vw,19px)!important;line-height:1.8!important;color:#fff!important;text-shadow:0 0 12px #ff42c8}
