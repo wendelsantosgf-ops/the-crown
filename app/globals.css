@@ -271,3 +271,41 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .crown-wallet strong{font-size:26px;color:var(--crown-accent,#d6ad79)}
 
 .challenge-media-preview{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:12px;border:1px solid rgba(214,173,121,.3);border-radius:8px}.challenge-media-preview img{width:min(100%,420px);max-height:260px;object-fit:contain;border-radius:6px}.challenge-media-preview button{padding:8px 12px}
+
+
+/* THE CROWN — neon arcade / pixel-art redesign. Existing application logic unchanged. */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--arcade-pink:#ff42c8;--arcade-violet:#9c65ff;--arcade-blue:#5b7bff;--arcade-ink:#090719;--arcade-text:#f4eaff}
+body{background:var(--arcade-ink);color:var(--arcade-text);font-family:'Space Grotesk',sans-serif;background-image:radial-gradient(ellipse at 55% 0%,rgba(115,37,185,.25),transparent 60%),linear-gradient(180deg,#100a2a,#070614 65%)}
+.shell{--crown-primary:#ad238d!important;--crown-accent:#ff79dc!important;--crown-background:#090719!important;min-height:100vh;background:transparent}
+.sidebar{width:274px;background:linear-gradient(180deg,rgba(18,11,45,.98),rgba(8,7,25,.98));border-right:2px solid #8541d9;box-shadow:inset -2px 0 #ff42c850,8px 0 32px #080316;gap:0;padding:26px 16px}
+.brand{font-family:'Press Start 2P',monospace;font-size:23px;line-height:1.55;letter-spacing:2px;color:#ffe7ff;text-shadow:0 0 13px #ff42c8,0 0 30px #a63cff;margin-bottom:34px}
+.brand svg{color:#ffd179;filter:drop-shadow(0 0 9px #ff4aca);width:53px;height:53px}
+.sidebar nav{gap:10px}
+.sidebar nav button{background:linear-gradient(100deg,rgba(21,18,64,.95),rgba(11,13,45,.9));border:2px solid #5455bc;border-radius:3px;color:#f4eaff;box-shadow:inset 0 0 0 1px #9c65ff40,0 0 12px #4340bd35;text-transform:uppercase;font:600 12px/1.5 'Space Grotesk',sans-serif;letter-spacing:.7px;min-height:51px;transition:background .2s,box-shadow .2s,transform .2s}
+.sidebar nav button:hover,.sidebar nav button.active{background:linear-gradient(95deg,#7d168c,#bd208f);border-color:#ff8ff1;color:#fff;box-shadow:0 0 11px #ff42c8,0 0 23px #ff42c866,inset 0 0 14px #ffb8f733;transform:translateX(2px)}
+.sidebar nav button svg{color:#ff8bde;filter:drop-shadow(0 0 4px #d747c9)}
+.sidebar nav button.active svg{color:#fff}
+.sidebar-foot{color:#ff7ee7;text-shadow:0 0 12px #ff42c8}
+.shell main{background:transparent;min-width:0}
+.top{background:rgba(9,7,29,.9);border-bottom:1px solid #8644ba;box-shadow:0 4px 18px #a91bc522}
+.top-right{color:#f5dafa}
+.identity{font-family:'Space Grotesk',sans-serif;color:#fff}
+.identity span{color:#ff8ee7}
+.content{max-width:1500px}
+.hero{position:relative;min-height:380px;display:flex;align-items:flex-end;justify-content:center;text-align:center;overflow:hidden;border:2px solid #aa5eff!important;border-radius:9px!important;box-shadow:0 0 0 4px #0a0924,0 0 26px #ed3ac66e,inset 0 0 60px #12042d;background-image:linear-gradient(180deg,rgba(13,7,42,.04) 30%,rgba(9,4,30,.8) 100%),url('/crown-arcade-bg.svg')!important;background-size:cover!important;background-position:center!important}
+.hero:before{content:'♛  THE CROWN  ♛';position:absolute;top:10%;left:0;right:0;font:clamp(20px,4vw,52px)/1.4 'Press Start 2P',monospace;letter-spacing:1px;color:#fff1ff;text-shadow:4px 4px #772ab4,0 0 18px #ff42c8,0 0 34px #f52fc6;pointer-events:none}
+.hero>div{position:relative;z-index:1;padding:14px 24px 24px;background:linear-gradient(transparent,#0c0823bb);width:100%}
+.hero h1{font-family:'Press Start 2P',monospace!important;font-size:clamp(11px,1.5vw,19px)!important;line-height:1.8!important;color:#fff!important;text-shadow:0 0 12px #ff42c8}
+.hero p{font-family:'Space Grotesk',sans-serif;letter-spacing:4px;color:#ffb8eb!important;text-shadow:0 0 9px #ed3ac6}
+.section,.panel,.mission,.crown-wallet,.crown-challenge-extras,.crown-comments,.crown-settlement,.admin-section{background:linear-gradient(135deg,rgba(21,13,49,.96),rgba(10,9,31,.97))!important;border:1px solid #7443b8!important;box-shadow:inset 0 0 0 1px #ff42c81c,0 0 17px #7831b02a;border-radius:7px!important}
+.section h2,.panel h2,.mission h2,.admin-section h2{color:#ffe6ff!important;text-shadow:0 0 12px #ba45e966}
+.crown-challenge-extras h3,.crown-comments h3,.crown-settlement h3,.crown-wallet h3{color:#ff91e5!important}
+button:not(.mobile-menu):not(.logout):not(.avatar-profile-link),.challenge-heading>button{transition:filter .18s,box-shadow .18s}
+.section button:not(.text-button),.mission button,.crown-comments button,.crown-challenge-extras button,.crown-settlement button,.appearance-actions button,.challenge-heading>button{background:linear-gradient(90deg,#76218f,#b52a98)!important;border:1px solid #f583e9!important;border-radius:4px!important;color:#fff!important;box-shadow:0 0 11px #e63fba33}
+.section button:not(.text-button):hover,.mission button:hover,.crown-comments button:hover,.crown-challenge-extras button:hover,.crown-settlement button:hover{box-shadow:0 0 16px #e63fba99;filter:brightness(1.13)}
+input,select,textarea{background:#100c2a!important;color:#f7ecff!important;border-color:#7451aa!important}
+input:focus,select:focus,textarea:focus{outline:1px solid #ff72e0!important;box-shadow:0 0 9px #ff42c855}
+.crown-wallet strong{color:#ff9ae9!important;text-shadow:0 0 10px #ff42c866}
+@media(max-width:900px){.sidebar{width:245px}.hero{min-height:290px}.hero:before{top:13%}}
+@media(max-width:700px){.sidebar{width:260px}.hero{min-height:225px}.hero:before{font-size:clamp(13px,4vw,24px);top:12%}.hero h1{font-size:11px!important}.hero p{letter-spacing:2px}.content{padding-left:12px!important;padding-right:12px!important}}
