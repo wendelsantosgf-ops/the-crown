@@ -1,7 +1,7 @@
 import "./globals.css";
 
 const siteUrl="https://thecrown-rpg.vercel.app";
-const previewImage="/the-crown-pixel-bg.png";
+const previewImage=siteUrl+"/the-crown-pixel-bg.png";
 
 export const metadata={
   metadataBase:new URL(siteUrl),
@@ -14,7 +14,14 @@ export const metadata={
     siteName:"The Crown",
     title:"The Crown",
     description:"Desafie. Conquiste. Exponha.",
-    images:[{url:previewImage,alt:"The Crown — castelo em pixel art neon"}]
+    images:[{
+      url:previewImage,
+      secureUrl:previewImage,
+      width:1200,
+      height:630,
+      type:"image/png",
+      alt:"The Crown — castelo em pixel art neon"
+    }]
   },
   twitter:{
     card:"summary_large_image",
