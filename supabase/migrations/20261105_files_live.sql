@@ -23,7 +23,7 @@ drop policy if exists crown_files_read on public.crown_files;
 create policy crown_files_read on public.crown_files for select to authenticated using (true);
 drop policy if exists crown_files_insert on public.crown_files;
 create policy crown_files_insert on public.crown_files for insert to authenticated
- with check (author_id=auth.uid() and exists(select 1 from public.crown_profiles p where p.id=auth.uid() and p.account_type='player'));
+ with check (author_id=auth.uid() and exists(select 1 from public.crown_profiles p where p.id=auth.uid() and (p.account_type='player' or public.crown_is_admin())));
 drop policy if exists crown_files_delete on public.crown_files;
 create policy crown_files_delete on public.crown_files for delete to authenticated
  using (author_id=auth.uid() or public.crown_is_admin());
@@ -41,7 +41,7 @@ create policy crown_files_storage_read on storage.objects for select to authenti
 drop policy if exists crown_files_storage_upload on storage.objects;
 create policy crown_files_storage_upload on storage.objects for insert to authenticated
  with check(bucket_id='crown-files' and split_part(name,'/',1)=auth.uid()::text
- and exists(select 1 from public.crown_profiles p where p.id=auth.uid() and p.account_type='player'));
+ and exists(select 1 from public.crown_profiles p where p.id=auth.uid() and (p.account_type='player' or public.crown_is_admin())));
 drop policy if exists crown_files_storage_delete on storage.objects;
 create policy crown_files_storage_delete on storage.objects for delete to authenticated
  using(bucket_id='crown-files' and (split_part(name,'/',1)=auth.uid()::text or public.crown_is_admin()));
