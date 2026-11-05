@@ -257,3 +257,17 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .admin-challenges form{display:grid;gap:12px}
 .admin-challenges input,.admin-challenges textarea{width:100%;min-width:0;box-sizing:border-box}
 @media(max-width:600px){.challenge-heading{align-items:stretch}.challenge-heading>button{width:100%}}
+
+/* Challenge wagering and conversation */
+.crown-challenge-extras,.crown-comments,.crown-settlement,.crown-wallet{padding:18px;margin:16px 0;border:1px solid rgba(214,173,121,.3);border-radius:12px;background:rgba(20,10,13,.72)}
+.crown-challenge-extras h3,.crown-comments h3,.crown-settlement h3,.crown-wallet h3{margin:0 0 12px;color:var(--crown-accent,#d6ad79)}
+.crown-challenge-extras>div,.crown-comment{padding:10px 0;border-bottom:1px solid rgba(214,173,121,.15)}
+.crown-challenge-extras form,.crown-comments form{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.crown-challenge-extras input,.crown-comments input{flex:1;min-width:160px;background:#1b1013;color:#fff;border:1px solid #75515b;border-radius:7px;padding:11px}
+.crown-challenge-extras button,.crown-comments button,.crown-settlement button{background:var(--crown-primary,#8c383f);color:#fff0dc;border:1px solid var(--crown-accent,#d6ad79);border-radius:7px;padding:10px 15px;cursor:pointer;margin:4px}
+.crown-challenge-extras button:disabled,.crown-comments button:disabled,.crown-settlement button:disabled{opacity:.5;cursor:not-allowed}
+.crown-comment{overflow-wrap:anywhere}
+.crown-comment button{font-size:11px;padding:5px 8px}
+.crown-wallet strong{font-size:26px;color:var(--crown-accent,#d6ad79)}
+
+.challenge-media-preview{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:12px;border:1px solid rgba(214,173,121,.3);border-radius:8px}.challenge-media-preview img{width:min(100%,420px);max-height:260px;object-fit:contain;border-radius:6px}.challenge-media-preview button{padding:8px 12px}
