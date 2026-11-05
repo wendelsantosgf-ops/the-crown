@@ -309,3 +309,19 @@ input:focus,select:focus,textarea:focus{outline:1px solid #ff72e0!important;box-
 .crown-wallet strong{color:#ff9ae9!important;text-shadow:0 0 10px #ff42c866}
 @media(max-width:900px){.sidebar{width:245px}.hero{min-height:290px}.hero:before{top:13%}}
 @media(max-width:700px){.sidebar{width:260px}.hero{min-height:225px}.hero:before{font-size:clamp(13px,4vw,24px);top:12%}.hero h1{font-size:11px!important}.hero p{letter-spacing:2px}.content{padding-left:12px!important;padding-right:12px!important}}
+
+/* Community files and live player — pixel neon */
+.crown-files,.crown-audience{min-width:0}
+.crown-file-form{display:grid;gap:12px;max-width:680px;margin:22px 0;padding:20px;border:1px solid #a03ad1;background:#100a27}
+.crown-file-form input,.crown-file-form textarea{width:100%;padding:12px;background:#100c25;border:1px solid #9144c9;color:#fff;font:inherit}
+.crown-file-form textarea{min-height:90px;resize:vertical}
+.crown-file-form button,.crown-file-item button{background:#8d1b9c;color:#fff;border:1px solid #ef7bea;padding:11px 16px;margin-right:8px}
+.crown-file-list{display:grid;gap:14px}
+.crown-file-item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px;border:1px solid #7135a7;background:#110b27;overflow-wrap:anywhere}
+.crown-file-item h3{margin:0 0 8px;color:#f8a9ff}
+.crown-file-item p{white-space:pre-wrap}
+.crown-file-item small{color:#c4b0d7}
+.crown-video{aspect-ratio:16/9;width:100%;background:#090514;min-height:220px}
+.crown-video iframe{display:block;width:100%;height:100%;border:0}
+.crown-audience .live{max-width:950px}
+@media(max-width:650px){.crown-file-item{flex-direction:column;align-items:stretch}.crown-video{min-height:180px}}
