@@ -1,3 +1,26 @@
 import "./globals.css";
-export const metadata={title:"The Crown",description:"Desafie. Conquiste. Exponha."};
+
+const siteUrl="https://thecrown-rpg.vercel.app";
+const previewImage="/the-crown-pixel-bg.png";
+
+export const metadata={
+  metadataBase:new URL(siteUrl),
+  title:"The Crown",
+  description:"Desafie. Conquiste. Exponha.",
+  openGraph:{
+    type:"website",
+    locale:"pt_BR",
+    url:siteUrl,
+    siteName:"The Crown",
+    title:"The Crown",
+    description:"Desafie. Conquiste. Exponha.",
+    images:[{url:previewImage,alt:"The Crown — castelo em pixel art neon"}]
+  },
+  twitter:{
+    card:"summary_large_image",
+    title:"The Crown",
+    description:"Desafie. Conquiste. Exponha.",
+    images:[previewImage]
+  }
+};
 export default function RootLayout({children}){return <html lang="pt-BR"><body>{children}</body></html>}
